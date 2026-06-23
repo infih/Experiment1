@@ -3,180 +3,290 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meow Meow</title>
+    <title>Meow Meow | Meow</title>
     <style>
+        :root {
+            --bg-color: #0f172a;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent: #3b82f6;
+            --card-bg: #1e293b;
+        }
         body {
             margin: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: #121212;
-            color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
             line-height: 1.6;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
         }
-        header {
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 50px;
-            background-color: #1e1e1e;
+            padding: 1.5rem 10%;
+            position: fixed;
+            width: 80%;
+            top: 0;
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
         }
         .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text-main);
         }
-        nav a {
-            color: #ffffff;
-            text-decoration: none;
-            margin-left: 20px;
+        .logo span {
+            color: var(--accent);
         }
-        nav a:hover {
-            color: #bb86fc;
-        }
-        .hero {
-            text-align: center;
-            padding: 100px 20px;
-        }
-        .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 10px;
-        }
-        .hero h2 {
-            font-size: 1.5rem;
-            color: #bb86fc;
-            margin-top: 0;
-        }
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 40px 20px;
-        }
-        .section-title {
-            font-size: 2rem;
-            border-bottom: 2px solid #bb86fc;
-            padding-bottom: 10px;
-            margin-bottom: 20px;
-        }
-        .about-text {
-            font-size: 1.2rem;
-            margin-bottom: 40px;
-        }
-        .experience-grid {
+        .nav-links {
             display: flex;
-            flex-direction: column;
-            gap: 20px;
+            gap: 2.5rem;
+            font-weight: 500;
         }
-        .experience-item {
-            background-color: #1e1e1e;
-            padding: 20px;
-            border-radius: 8px;
+        .nav-links a {
+            transition: color 0.3s;
         }
-        .experience-header {
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+        section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 0 10%;
+        }
+        /* Meow (Hero Section) */
+        .hero {
+            margin-top: 60px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            gap: 3rem;
         }
-        .experience-title {
-            font-weight: bold;
-            font-size: 1.2rem;
+        .hero-text {
+            flex: 1.2;
         }
-        .experience-date {
-            color: #aaaaaa;
+        .hero-text h1 {
+            font-size: 4.5rem;
+            margin: 0;
+            line-height: 1.1;
+        }
+        .hero-text h2 {
+            font-size: 2rem;
+            color: var(--accent);
+            margin: 1rem 0;
+        }
+        .hero-text p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 2.5rem;
+            max-width: 550px;
+        }
+        .btn-group {
+            display: flex;
+            gap: 1rem;
+        }
+        .btn {
+            padding: 0.8rem 1.8rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
             font-size: 1rem;
         }
-        .cta {
+        .btn-primary {
+            background-color: var(--accent);
+            color: white;
+            border: 2px solid var(--accent);
+        }
+        .btn-primary:hover {
+            background-color: transparent;
+            color: var(--accent);
+        }
+        .btn-outline {
+            background-color: transparent;
+            color: var(--text-main);
+            border: 2px solid var(--text-muted);
+        }
+        .btn-outline:hover {
+            border-color: var(--text-main);
+        }
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+        .hero-image img {
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 6px solid var(--card-bg);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
+        }
+        /* Meow (Content Sections) */
+        .section-container {
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+            width: 100%;
+        }
+        .section-container.reverse {
+            flex-direction: row-reverse;
+        }
+        .section-content {
+            flex: 1;
+        }
+        .section-content h2 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--text-main);
+        }
+        .section-content p {
+            color: var(--text-muted);
+            font-size: 1.15rem;
+            margin-bottom: 2rem;
+        }
+        .section-image {
+            flex: 1;
+        }
+        .section-image img {
+            width: 100%;
+            border-radius: 1.5rem;
+            box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease;
+        }
+        .section-image img:hover {
+            transform: translateY(-10px);
+        }
+        /* Meow (Contact Section) */
+        .contact {
             text-align: center;
-            margin: 50px 0;
+            flex-direction: column;
+            justify-content: center;
         }
-        .cta a {
-            display: inline-block;
-            background-color: #bb86fc;
-            color: #121212;
-            padding: 15px 30px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1.1rem;
-            transition: background-color 0.2s;
+        .contact h2 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
         }
-        .cta a:hover {
-            background-color: #9965f4;
+        .contact p {
+            color: var(--text-muted);
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 3rem;
+        }
+        .contact-box {
+            background-color: var(--card-bg);
+            padding: 2.5rem 5rem;
+            border-radius: 1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 1.5rem;
+            font-weight: 600;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
         footer {
             text-align: center;
-            padding: 20px;
-            background-color: #1e1e1e;
-            font-size: 0.9rem;
-            color: #aaaaaa;
+            padding: 2rem;
+            background-color: var(--card-bg);
+            color: var(--text-muted);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        @media (max-width: 900px) {
+            .hero, .section-container, .section-container.reverse {
+                flex-direction: column;
+                text-align: center;
+                gap: 2rem;
+                padding-top: 100px;
+            }
+            .nav-links {
+                display: none; 
+            }
+            .hero-text h1 { font-size: 3rem; }
+            .hero-image img { width: 300px; height: 300px; }
+            .btn-group { justify-content: center; }
+            .contact-box { padding: 1.5rem 2rem; font-size: 1.2rem; }
         }
     </style>
 </head>
 <body>
 
     <!-- Meow (Navigation) -->
-    <header>
-        <div class="logo">meow meow</div>
-        <nav>
-            <a href="#">Meow</a>
-            <a href="#about">Meow</a>
-            <a href="#">Meow</a>
-            <a href="#">Meow</a>
-            <a href="#">Meow</a>
-        </nav>
-    </header>
+    <nav>
+        <div class="logo">Meow<span>Meow</span></div>
+        <div class="nav-links">
+            <a href="#home">Meow</a>
+            <a href="#about">Meow Meow</a>
+            <a href="#projects">Meow</a>
+            <a href="#contact">Meow Meow</a>
+        </div>
+    </nav>
 
     <!-- Meow (Hero Section) -->
-    <section class="hero">
-        <h1>Meow, meow meow meow</h1>
-        <h2>Meow Meow</h2>
-        <p>Meow</p>
+    <section id="home" class="hero">
+        <div class="hero-text">
+            <h1>Meow! Meow Meow,</h1>
+            <h2>Meow Meow Meow Meow</h2>
+            <p>Meow meow meow meow meow meow meow meow meow meow meow. Meow meow meow, meow meow meow meow—meow meow meow meow meow meow meow meow.</p>
+            <div class="btn-group">
+                <a href="#" class="btn btn-primary">Meow Meow Meow</a>
+                <a href="#contact" class="btn btn-outline">Meow Meow</a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <img src="https://placecats.com/500/500" alt="Meow Meow Cat">
+        </div>
     </section>
 
-    <!-- Meow (About & Experience Section) -->
-    <div class="container" id="about">
-        <h2 class="section-title">Meow Meow</h2>
-        
-        <div class="about-text">
-            <p>Meow meow meow meow! Meow meow meow meow meow.</p>
-            <p>Meow meow meow meow meow meow meow meow meow meow meow.</p>
-        </div>
-
-        <h2 class="section-title">Meow & Meow</h2>
-        <div class="experience-grid">
-            
-            <div class="experience-item">
-                <div class="experience-header">
-                    <span class="experience-title">Meow Meow - Meow</span>
-                    <span class="experience-date">Meow - Meow</span>
-                </div>
+    <!-- Meow (About Section) -->
+    <section id="about">
+        <div class="section-container">
+            <div class="section-image">
+                <img src="https://placecats.com/600/400" alt="Meow Setup Cat">
             </div>
-            
-            <div class="experience-item">
-                <div class="experience-header">
-                    <span class="experience-title">Meow Meow - Meow Meow Meow (meow)</span>
-                    <span class="experience-date">Meow - Meow</span>
-                </div>
+            <div class="section-content">
+                <h2>Meow Meow</h2>
+                <p>Meow meow meow meow meow meow meow meow. Meow meow meow meow meow meow meow meow meow meow meow meow meow.</p>
+                <a href="#" class="btn btn-outline">Meow Meow</a>
             </div>
+        </div>
+    </section>
 
-            <div class="experience-item">
-                <div class="experience-header">
-                    <span class="experience-title">Meow - Meow Meow Meow</span>
-                    <span class="experience-date">Meow - Meow</span>
-                </div>
+    <!-- Meow (Projects Section) -->
+    <section id="projects">
+        <div class="section-container reverse">
+            <div class="section-image">
+                <img src="https://placecats.com/600/401" alt="Meow Project Cat">
             </div>
-
+            <div class="section-content">
+                <h2>Meow Meow</h2>
+                <p>Meow meow meow meow meow meow meow meow meow. Meow meow meow meow meow meow meow meow meow.</p>
+                <a href="#" class="btn btn-outline">Meow Meow</a>
+            </div>
         </div>
+    </section>
 
-        <!-- Meow (Call to Action) -->
-        <div class="cta">
-            <a href="#">Meow meow meow meow meow</a>
+    <!-- Meow (Contact Section) -->
+    <section id="contact" class="contact">
+        <h2>Meow Meow Meow</h2>
+        <p>Meow meow meow meow meow meow meow meow meow meow meow meow meow meow meow.</p>
+        <div class="contact-box">
+            <span>📧</span> meow.meow@meow.meow
         </div>
-    </div>
+    </section>
 
     <!-- Meow (Footer) -->
     <footer>
-        <p>meow meow</p>
-        <p>Meow meow meow meow meow meow</p>
+        <p>Meow meow meow meow meow meow meow</p>
     </footer>
 
 </body>
 </html>
-
